@@ -29,6 +29,7 @@ import { createAccessMiddleware } from './auth';
 import { ensureMoltbotGateway, findExistingMoltbotProcess, syncToR2 } from './gateway';
 import { publicRoutes, api, adminUi, debug, cdp } from './routes';
 import { redactSensitiveParams } from './utils/logging';
+import { injectCustomCSS } from './middleware/inject-custom-css';
 import loadingPageHtml from './assets/loading.html';
 import configErrorHtml from './assets/config-error.html';
 
@@ -400,7 +401,7 @@ app.all('*', async (c) => {
   }
 
   console.log('[HTTP] Proxying:', url.pathname + url.search);
-  const httpResponse = await sandbox.containerFetch(request, MOLTBOT_PORT);
+  let httpResponse = await sandbox.containerFetch(request, MOLTBOT_PORT);
   console.log('[HTTP] Response status:', httpResponse.status);
 
   // Add debug header to verify worker handled the request
@@ -408,11 +409,17 @@ app.all('*', async (c) => {
   newHeaders.set('X-Worker-Debug', 'proxy-to-moltbot');
   newHeaders.set('X-Debug-Path', url.pathname);
 
-  return new Response(httpResponse.body, {
+  // Create response with headers
+  let response = new Response(httpResponse.body, {
     status: httpResponse.status,
     statusText: httpResponse.statusText,
     headers: newHeaders,
   });
+
+  // Inject custom CSS for better UI readability
+  response = await injectCustomCSS(response);
+
+  return response;
 });
 
 /**
