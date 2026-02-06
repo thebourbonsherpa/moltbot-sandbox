@@ -10,7 +10,7 @@ set -e
 
 # Check if clawdbot gateway is already running - bail early if so
 # Note: CLI is still named "clawdbot" until upstream renames it
-if pgrep -f "clawdbot gateway" > /dev/null 2>&1; then
+if pgrep -f "openclaw gateway" > /dev/null 2>&1; then
     echo "Moltbot gateway is already running, exiting."
     exit 0
 fi
@@ -304,7 +304,7 @@ echo "Starting Moltbot Gateway..."
 echo "Gateway will be available on port 18789"
 
 # Clean up stale lock files
-rm -f /tmp/clawdbot-gateway.lock 2>/dev/null || true
+rm -f /tmp/openclaw-gateway.lock 2>/dev/null || true
 rm -f "$CONFIG_DIR/gateway.lock" 2>/dev/null || true
 
 BIND_MODE="lan"
@@ -312,8 +312,8 @@ echo "Dev mode: ${CLAWDBOT_DEV_MODE:-false}, Bind mode: $BIND_MODE"
 
 if [ -n "$CLAWDBOT_GATEWAY_TOKEN" ]; then
     echo "Starting gateway with token auth..."
-    exec clawdbot gateway --port 18789 --verbose --allow-unconfigured --bind "$BIND_MODE" --token "$CLAWDBOT_GATEWAY_TOKEN"
+    exec openclaw gateway --port 18789 --verbose --allow-unconfigured --bind "$BIND_MODE" --token "$CLAWDBOT_GATEWAY_TOKEN"
 else
     echo "Starting gateway with device pairing (no token)..."
-    exec clawdbot gateway --port 18789 --verbose --allow-unconfigured --bind "$BIND_MODE"
+    exec openclaw gateway --port 18789 --verbose --allow-unconfigured --bind "$BIND_MODE"
 fi
