@@ -1,1 +1,4 @@
 [20260206-164117] Starting backup...
+2026/02/06 16:41:17 CRITICAL: Failed to create file system for "r2:clawdbot-backups/workspace": operation error S3: HeadObject, https response error StatusCode: 403, RequestID: , HostID: , api error Forbidden: Forbidden
+2026/02/06 16:41:17 CRITICAL: Failed to create file system for "r2:clawdbot-backups/config": operation error S3: HeadObject, https response error StatusCode: 403, RequestID: , HostID: , api error Forbidden: Forbidden
+[20260206-164117] Backup complete
