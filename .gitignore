@@ -1,0 +1,5 @@
+# Never commit credentials
+memory/credentials.md
+
+# Backup logs (contain timestamps, no secrets but verbose)
+memory/backup-log.txt
