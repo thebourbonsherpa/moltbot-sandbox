@@ -3,3 +3,4 @@ memory/credentials.md
 
 # Backup logs (contain timestamps, no secrets but verbose)
 memory/backup-log.txt
+memory/credentials.md
