@@ -4,11 +4,12 @@
 
 ## Core Principles
 
-1. **Sonnet for reading, Opus for synthesis**
-2. **Subagents for parallel work**
-3. **Document as you go, not at the end**
-4. **Commit frequently to GitHub**
-5. **Backup to persistent storage**
+1. **Search for known issues FIRST** - Before building workarounds, search: "openclaw [problem] cloudflare moltworker"
+2. **Sonnet for reading, Opus for synthesis**
+3. **Subagents for parallel work**
+4. **Document as you go, not at the end**
+5. **Commit frequently to GitHub**
+6. **Backup to persistent storage**
 
 ---
 
