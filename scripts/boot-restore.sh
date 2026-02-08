@@ -47,3 +47,9 @@ fi
 # Step 4: Nothing to restore - fresh start
 echo "$(date -Iseconds) - WARNING: No backup found, starting fresh" >> $LOG
 exit 1
+
+# Step 5: Restore credentials from persistent storage
+if [ -f "/data/moltbot/.credentials.env" ]; then
+    cp /data/moltbot/.credentials.env /root/clawd/.credentials.env
+    echo "$(date -Iseconds) - Restored credentials" >> $LOG
+fi
