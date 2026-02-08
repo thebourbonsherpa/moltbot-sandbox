@@ -1,0 +1,41 @@
+# BlueBubbles Channel Configuration Example
+# Add this to your Clawdbot gateway config.yaml
+
+channels:
+  # Existing channels (telegram, etc.)
+  telegram:
+    plugin: telegram
+    token: "YOUR_TELEGRAM_TOKEN"
+  
+  # Add BlueBubbles channel
+  bluebubbles:
+    plugin: "@clawdbot/plugin-bluebubbles"
+    serverUrl: "http://195.201.94.15:1234"
+    password: "sk-nqfgJm5nSNXHe2UbFHu7"
+    pollIntervalMs: 5000  # Check for new messages every 5 seconds
+
+sessions:
+  main:
+    agent: main
+    channels:
+      - telegram
+      - bluebubbles  # Add bluebubbles to session
+    owners:
+      - "689379797"  # Telegram user ID (for permission mapping)
+    
+    # Optional: Configure which BlueBubbles chats to monitor
+    # channelConfig:
+    #   bluebubbles:
+    #     allowedChats:
+    #       - "iMessage;-;+436644068787"  # Scott Amis
+
+# Plugin discovery (if not using global npm link)
+plugins:
+  discovery:
+    - /root/clawd/skills/bluebubbles/plugin
+    - node_modules  # Standard location
+
+# Provider configuration
+providers:
+  - id: anthropic
+    apiKey: "YOUR_ANTHROPIC_KEY"

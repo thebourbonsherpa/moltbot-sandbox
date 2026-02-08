@@ -1,0 +1,25 @@
+{
+  "name": "@clawdbot/plugin-bluebubbles",
+  "version": "1.0.0",
+  "description": "BlueBubbles iMessage channel plugin for Clawdbot",
+  "type": "module",
+  "main": "bluebubbles.mjs",
+  "exports": {
+    ".": "./bluebubbles.mjs"
+  },
+  "keywords": [
+    "clawdbot",
+    "plugin",
+    "channel",
+    "bluebubbles",
+    "imessage"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "clawdbot": ">=0.9.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
